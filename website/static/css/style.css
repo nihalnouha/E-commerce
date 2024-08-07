@@ -43,3 +43,6 @@
   color: orange;
   transition: 200ms;
 }
+ .dark-text{
+  color: #000000;
+ }

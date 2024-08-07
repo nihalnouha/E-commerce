@@ -2,8 +2,7 @@ from flask import Blueprint, render_template, flash, redirect, request, jsonify
 from .models import Product, Cart, Order
 from flask_login import login_required, current_user
 from . import db
-from .intasend.APIService import APIService
-
+from intasend import APIService
 
 
 views = Blueprint('views', __name__)
@@ -202,3 +201,8 @@ def search():
                            if current_user.is_authenticated else [])
 
     return render_template('search.html')
+
+    
+@views.route('/about-us')
+def about_us():
+    return render_template('about_us.html')

@@ -1,4 +1,3 @@
-
 from flask import Blueprint, render_template, flash, send_from_directory, redirect
 from flask_login import login_required, current_user
 from .forms import ShopItemsForm, OrderForm
