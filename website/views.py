@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect, request, jsonify
+from flask import Blueprint, render_template, flash, redirect, request, jsonify , url_for
 from .models import Product, Cart, Order
 from flask_login import login_required, current_user
 from . import db
@@ -202,7 +202,19 @@ def search():
 
     return render_template('search.html')
 
-    
+
 @views.route('/about-us')
 def about_us():
     return render_template('about_us.html')
+
+@views.route('/contact-us' , methods=['GET', 'POST'])
+def contact_us():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        # Logique pour traiter les données du formulaire, comme envoyer un email ou stocker dans une base de données
+        flash('Your message has been sent successfully!', 'success')
+        return redirect(url_for('views.contact_us'))
+    return render_template('contact_us.html')
